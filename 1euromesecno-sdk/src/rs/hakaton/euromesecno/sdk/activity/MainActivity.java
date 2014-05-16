@@ -1,15 +1,17 @@
-package rs.hakaton.euromesecno.sdk;
+package rs.hakaton.euromesecno.sdk.activity;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import rs.hakaton.euromesecno.sdk.R;
+import rs.hakaton.euromesecno.sdk.model.Settings;
+import rs.hakaton.euromesecno.sdk.webservice.OnSettingsResponseListener;
+import rs.hakaton.euromesecno.sdk.webservice.WebService;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -49,9 +51,13 @@ public class MainActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements OnSettingsResponseListener {
 
         public PlaceholderFragment() {
+        	
+        	WebService webService = new WebService();
+			webService.getSettings("", this);
+        	
         }
 
         @Override
@@ -60,6 +66,18 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+
+		@Override
+		public void onGetSettingsRespondSuccess(Settings settings) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onGetSettingsRespondError(String error, String response) {
+			// TODO Auto-generated method stub
+			
+		}
     }
 
 }
