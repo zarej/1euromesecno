@@ -1,5 +1,7 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
+import java.util.HashMap;
+
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.model.Settings;
 import rs.hakaton.euromesecno.sdk.webservice.OnSettingsResponseListener;
@@ -56,7 +58,9 @@ public class MainActivity extends ActionBarActivity {
         public PlaceholderFragment() {
         	
         	WebService webService = new WebService();
-			webService.getSettings("", this);
+        	HashMap<String, String> pairs = new HashMap<String, String>();
+    		pairs.put("token", "vrednost");
+			webService.getSettings("", pairs, this);
         	
         }
 

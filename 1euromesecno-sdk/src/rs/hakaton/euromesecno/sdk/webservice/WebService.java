@@ -25,8 +25,9 @@ public class WebService implements RequestListener {
 	
 	private RequestHandler handler;
 	
-	public void getSettings(String url, OnSettingsResponseListener listener) {
-		getRequestHandler().getRequest(url, null, "getSettings", REQ_SETTINGS, listener);
+	public void getSettings(String url, HashMap<String, String> pairs, OnSettingsResponseListener listener) {
+		
+		getRequestHandler().getRequest(url, pairs, "getSettings", REQ_SETTINGS, listener);
 	}
 
 	@Override
