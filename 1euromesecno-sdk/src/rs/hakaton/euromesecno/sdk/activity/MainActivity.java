@@ -1,8 +1,11 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import rs.hakaton.euromesecno.sdk.R;
+import rs.hakaton.euromesecno.sdk.adapter.BeneficiaryAdapter;
+import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import rs.hakaton.euromesecno.sdk.model.Settings;
 import rs.hakaton.euromesecno.sdk.webservice.OnSettingsResponseListener;
 import rs.hakaton.euromesecno.sdk.webservice.WebService;
@@ -14,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -68,6 +72,14 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            ListView list = (ListView) rootView.findViewById(R.id.main_list);
+            
+            ArrayList<Beneficiary> benificiaries = new ArrayList<Beneficiary>();
+//            benificiaries.add(new )
+            
+//            BeneficiaryAdapter adapter = new BeneficiaryAdapter(benificiaries, getActivity());
+            
+            
             return rootView;
         }
 
