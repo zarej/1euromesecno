@@ -1,3 +1,3 @@
 Social Change Hackathon
 
-Aj da pomognemo nekoj deci
+Aj da pomognemo deci
