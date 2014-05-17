@@ -2,8 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    
+    android:background="@color/app_bg" >
+	
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="150dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:background="@color/list_item_bg">
+        
+         <ImageView
+             android:id="@+id/main_list_item__image"
+             android:layout_width="match_parent"
+    		 android:layout_height="match_parent"
+    		 android:layout_margin="5dp"
+             
+             android:src="@drawable/ic_launcher" />
+         
+    </LinearLayout>
+   
+	<LinearLayout
+	    android:layout_width="0dip"
+	    android:layout_height="150dp"
+	    android:layout_weight="4"
+	    android:orientation="vertical"
+	    android:background="@color/list_item_bg">	        
+		    
+	        <TextView
+	        android:id="@+id/main_list_item__name"
+	        android:layout_width="fill_parent"
+	        android:layout_height="90dp"
+	        android:lines="2"
+    		android:maxLines="2"
+	        android:text="Medium Text"
+	        android:textAppearance="?android:attr/textAppearanceMedium"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="5dp"
+	        android:gravity="center" 
+	        android:textSize="23sp"/>
 
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/main_list_item__image"
         android:layout_width="50dp"
@@ -23,5 +63,20 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:text="Button" />
+=======
+		    <Button
+		        android:id="@+id/main_list_item__send_sms_btn"
+		        android:layout_width="fill_parent"
+		        android:layout_height="40dp"
+		        android:background="@color/button"
+		        android:textSize="23sp"
+		    	android:textColor="@color/list_item_bg"
+		        android:layout_marginRight="5dp"
+		        android:text="DONIRAJ SMS" />
+         
+	    
+	</LinearLayout>
+    
+>>>>>>> f201e791c882439f5342eba0366d47dffe67410e
 
 </LinearLayout>

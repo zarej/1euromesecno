@@ -61,7 +61,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 		ImageLoader.getInstance().displayImage(benificiary.getSlika(), image);
 		
 		TextView name = (TextView) convertView.findViewById(R.id.main_list_item__name);
-		name.setText(benificiary.getIme() + " " + benificiary.getPrezime());
+		name.setText(benificiary.getIme() + "\n" + benificiary.getPrezime());
 		
 		Button sendSMSButton = (Button) convertView.findViewById(R.id.main_list_item__send_sms_btn);
 		
