@@ -4,4 +4,5 @@
     <color name="title">#30642a</color>
     <color name="app_bg">#e4e4e4</color> 
     <color name="list_item_bg">#ffffff</color>
+    <color name="gray">#fafafa</color>
 </resources>

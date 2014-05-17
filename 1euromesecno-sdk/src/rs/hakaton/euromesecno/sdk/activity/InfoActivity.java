@@ -1,5 +1,7 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.R.id;
 import rs.hakaton.euromesecno.sdk.R.layout;
@@ -15,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Build;
 
@@ -25,18 +28,24 @@ public class InfoActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 		
-		Intent i = getIntent();
 		
-		Beneficiary beneficiary = (Beneficiary) i.getParcelableExtra(MainActivity.SELECTED_LIST_ITEM);
 		
-		TextView txt = (TextView) findViewById(R.id.info_text);
-		txt.setText(beneficiary.getIme());
+		
 		
 		if (savedInstanceState == null) {
-//			getSupportFragmentManager().beginTransaction()
-//					.add(R.id.container, new PlaceholderFragment()).commit();
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.info_container, new PlaceholderFragment()).commit();
 		}
+		
+		
 	}
+	
+	protected void displayBeneficiary(Beneficiary beneficiary){
+		TextView txt = (TextView) findViewById(R.id.info_text);
+		txt.setText(beneficiary.getPrezime());
+	}
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,6 +80,20 @@ public class InfoActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_info, container,
 					false);
+			
+			Intent i = getActivity().getIntent();
+			
+			Beneficiary beneficiary = (Beneficiary) i.getParcelableExtra(MainActivity.SELECTED_LIST_ITEM);
+			
+			ImageView img = (ImageView) rootView.findViewById(R.id.main_list_item__image);
+			
+			ImageLoader.getInstance().displayImage(beneficiary.getSlika(), img);
+			
+			TextView txt = (TextView)rootView.findViewById(R.id.main_list_item__name);
+			txt.setText(beneficiary.getIme()+"\n"+beneficiary.getPrezime());
+			
+			
+			
 			return rootView;
 		}
 	}
