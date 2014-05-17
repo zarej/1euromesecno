@@ -32,6 +32,9 @@
         <activity
             android:name="rs.hakaton.euromesecno.sdk.activity.MainActivity" >
         </activity>
+        <activity
+            android:name="rs.hakaton.euromesecno.sdk.activity.InfoActivity" >
+        </activity>
     </application>
 
 </manifest>

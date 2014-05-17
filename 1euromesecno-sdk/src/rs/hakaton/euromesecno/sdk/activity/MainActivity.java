@@ -13,6 +13,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	private static final int MENU_ITEM_SHARE = 1;
 	private static final int MENU_ITEM_ABOUT = 2;
+	private static final String SELECTED_LIST_ITEM = "euromesecno.selectedBeneficiary";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -153,8 +155,9 @@ public class MainActivity extends ActionBarActivity {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
-					// TODO Auto-generated method stub
-					
+					Intent intent = new Intent(view.getContext(), InfoActivity.class);
+//					intent.putExtra(MainActivity.SELECTED_LIST_ITEM, parent.getItemAtPosition(position));
+					view.getContext().startActivity(intent);
 				}
 			});
 

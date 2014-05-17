@@ -1,7 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
+<LinearLayout 
+    android:layout_width="match_parent" 
     android:layout_height="match_parent"
-    tools:context="rs.hakaton.euromesecno.sdk.activity.InfoActivity"
-    tools:ignore="MergeRootFrame" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    >
+    
+    <TextView 
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        />
+</LinearLayout>
