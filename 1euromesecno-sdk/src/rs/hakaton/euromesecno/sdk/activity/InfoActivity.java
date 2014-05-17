@@ -1,5 +1,9 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import rs.hakaton.euromesecno.sdk.R;
@@ -74,6 +78,11 @@ public class InfoActivity extends ActionBarActivity {
 
 		public PlaceholderFragment() {
 		}
+		
+		private void setText(View rootView,Object id, Object txt){
+			TextView textView = (TextView) rootView.findViewById( (int) id);
+			textView.setText((String) txt);
+		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,20 +101,27 @@ public class InfoActivity extends ActionBarActivity {
 			TextView txt = (TextView)rootView.findViewById(R.id.main_list_item__name);
 			txt.setText(beneficiary.getIme()+"\n"+beneficiary.getPrezime());
 			
-			txt = (TextView)rootView.findViewById(R.id.info_amount);
-			txt.setText("300 000 €");
+//			txt = (TextView)rootView.findViewById(R.id.info_amount);
+//			txt.setText("300 000 €");
 			
-			txt = (TextView)rootView.findViewById(R.id.info_problem);
-			txt.setText("Teške bolesti");
 			
-			txt = (TextView)rootView.findViewById(R.id.info_sms_number);
-			txt.setText(beneficiary.getSms());
 			
-			txt = (TextView)rootView.findViewById(R.id.info_sms_text);
-			txt.setText(beneficiary.getRedni_broj());
+			HashMap<String, Integer> hm = new HashMap<String, Integer>();
 			
-			txt = (TextView)rootView.findViewById(R.id.info_text);
-			txt.setText(beneficiary.getInfo());
+			hm.put("200€", R.id.info_amount);
+			hm.put("Teške Bolesti", R.id.info_problem);
+			hm.put(beneficiary.getSms(), R.id.info_sms_number);
+			hm.put(beneficiary.getRedni_broj(), R.id.info_sms_text);
+			hm.put(beneficiary.getInfo(), R.id.info_text);
+			
+			Iterator it =  hm.entrySet().iterator();
+			
+			while (it.hasNext()) {
+				Map.Entry me= (Map.Entry) it.next();
+				
+				setText(rootView, me.getValue(), me.getKey());
+				
+			}
 			
 			return rootView;
 		}
