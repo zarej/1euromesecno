@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
@@ -68,18 +69,27 @@ public class WebService implements RequestListener {
 		}
 	}
 	
-	private RequestHandler getRequestHandler() {
+	protected RequestHandler getRequestHandler() {
 		if (handler == null) {
 			handler = new RequestHandler(this);
 		}
 		return handler;
 	}
 	
-	private boolean isJSONValid(String test) {
+	protected boolean isJSONValid(String test) {
 		try {
+			
 			new JSONObject(test);
 		} catch (JSONException ex) {
-			return false;
+			try {
+				new JSONArray(test);
+				return true;
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			
 		} catch (NullPointerException ex) {
 			return false;
 		}
