@@ -1,7 +1,6 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.adapter.BeneficiaryAdapter;
@@ -9,11 +8,12 @@ import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseL
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -22,14 +22,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 	
 	private static final int MENU_ITEM_SHARE = 1;
 	private static final int MENU_ITEM_ABOUT = 2;
+	
+	public static final String EXTRA_BENS = "extra_bens";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +66,53 @@ public class MainActivity extends ActionBarActivity {
 	    } else {
 	    	message.setText(ben.getRedni_broj());
 	    }
-	    
-	    
-	    
+	    	    
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(parent);
 	    
-	    builder.create().show();;
+	    final Dialog dialog = builder.create();
+	    dialog.show();
+	    
+	    new Handler().postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				dialog.dismiss();
+			}
+		}, 2000);
+	}
+	
+	public void showInfoDialog(int textResource, OnClickListener positiveListener ) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    // Get the layout inflater
+	    LayoutInflater inflater = getLayoutInflater();
 
+	    // Inflate and set the layout for the dialog
+	    View parent = inflater.inflate(R.layout.dialog_info, null);
+	    
+//	    TextView name = (TextView) parent.findViewById(R.id.dialog_thanks__name_txt);
+//	    name.setText(ben.getIme() + " " + ben.getPrezime());
+	    
+	    	    
+	    // Pass null as the parent view because its going in the dialog layout
+	    builder.setView(parent);
+	    
+	    if (textResource != -1) builder.setMessage(textResource);
+	    
+	    builder.setNegativeButton(getString(R.string.info_dialog_negative_btn), new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+	    builder.setPositiveButton(getString(R.string.info_dialog_positive_btn), positiveListener);
+	    final Dialog dialog = builder.create();
+	    
+	    
+	    dialog.show();
+	    
 	}
 
 	@SuppressLint("NewApi")
@@ -104,7 +145,6 @@ public class MainActivity extends ActionBarActivity {
 		
 		@Override
 		public boolean onMenuItemClick(MenuItem item) {
-			// TODO Auto-generated method stub
 			
 			switch (item.getItemId()) {
 			case MENU_ITEM_SHARE:
@@ -164,21 +204,44 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
-			BenficiaryService service = new BenficiaryService();
-
-			service.getBeneficiaries(getString(R.string.open_data_url_json),
-					this);
+			
+			ArrayList<Beneficiary> beneficiaries = getActivity().getIntent().getParcelableArrayListExtra(EXTRA_BENS);
+			
+			if(beneficiaries!=null) {
+				BeneficiaryAdapter adapter = new BeneficiaryAdapter(beneficiaries,
+						getActivity());
+				list.setAdapter(adapter);
+			} else {
+				
+				BenficiaryService service = new BenficiaryService();
+				
+				service.getBeneficiaries(getString(R.string.open_data_url_json),
+						this);
+			}
+			
 			
 			super.onActivityCreated(savedInstanceState);
 		}
 
 		@Override
-		public void onBeneficiaryListReturn(List<Beneficiary> beneficiaries) {
+		public void onBeneficiaryListReturn(ArrayList<Beneficiary> beneficiaries) {
 			// TODO Auto-generated method stub
 			BeneficiaryAdapter adapter = new BeneficiaryAdapter(beneficiaries,
 					getActivity());
 			list.setAdapter(adapter);
 
+		}
+
+		@Override
+		public void onBeneficiaryListReturnJson(String jsonResponse) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onBeneficiaryListReturnError(String error) {
+			// TODO Auto-generated method stub
+			
 		}
 
 	}

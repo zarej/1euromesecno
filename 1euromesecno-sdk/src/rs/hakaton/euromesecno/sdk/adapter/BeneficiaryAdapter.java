@@ -6,8 +6,8 @@ import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.SendSms;
 import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -73,7 +73,15 @@ public class BeneficiaryAdapter extends BaseAdapter {
 				Toast.makeText(context, "Saljem poruku", Toast.LENGTH_LONG).show();
 				//Test
 //				((MainActivity) context).showThanksDialog(benificiary);
-				new SendSms().send(context, benificiary);
+				
+				((MainActivity) context).showInfoDialog(-1, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						new SendSms().send(context, benificiary);
+					}
+				});
+				
 			}
 		});
 		

@@ -1,29 +1,47 @@
 package rs.hakaton.euromesecno;
 
+import java.util.ArrayList;
+
 import rs.hakaton.euromesecno.sdk.activity.MainActivity;
+import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
+import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
+import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.Toast;
 
-public class SplashActivity extends ActionBarActivity {
+public class SplashActivity extends ActionBarActivity  implements
+BeneficiaryServiceResponseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         
-        
-        new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				Intent i = new Intent(SplashActivity.this, MainActivity.class);
-				startActivity(i);
-			}
-		}, 100);
-
+        BenficiaryService service = new BenficiaryService();
+        service.getBeneficiaries(getString(R.string.open_data_url_json), this);
     }
+
+	@Override
+	public void onBeneficiaryListReturn(ArrayList<Beneficiary> beneficiaries) {
+		Intent i = new Intent(SplashActivity.this, MainActivity.class);
+		i.putExtra(MainActivity.EXTRA_BENS, beneficiaries);
+		startActivity(i);
+		finish();
+	}
+
+	@Override
+	public void onBeneficiaryListReturnJson(String jsonResponse) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onBeneficiaryListReturnError(String error) {
+		Toast.makeText(this, "Probably problem with Open data", Toast.LENGTH_LONG).show();
+		
+	}
+
 
 
 
