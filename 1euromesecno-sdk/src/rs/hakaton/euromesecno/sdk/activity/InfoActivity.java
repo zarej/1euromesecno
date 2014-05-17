@@ -4,9 +4,11 @@ import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.R.id;
 import rs.hakaton.euromesecno.sdk.R.layout;
 import rs.hakaton.euromesecno.sdk.R.menu;
+import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,8 +25,12 @@ public class InfoActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 		
+		Intent i = getIntent();
+		
+		Beneficiary beneficiary = (Beneficiary) i.getParcelableExtra(MainActivity.SELECTED_LIST_ITEM);
+		
 		TextView txt = (TextView) findViewById(R.id.info_text);
-		txt.setText("Marko CAR");
+		txt.setText(beneficiary.getIme());
 		
 		if (savedInstanceState == null) {
 //			getSupportFragmentManager().beginTransaction()
