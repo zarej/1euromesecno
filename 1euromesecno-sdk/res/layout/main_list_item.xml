@@ -40,19 +40,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="23sp" />
 
-        <ImageView
-            android:id="@+id/main_list_item__image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:id="@+id/main_list_item__name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
         <Button
             android:id="@+id/main_list_item__send_sms_btn"
             android:layout_width="fill_parent"

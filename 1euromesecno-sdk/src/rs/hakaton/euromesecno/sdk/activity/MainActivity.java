@@ -10,6 +10,9 @@ import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -36,6 +40,38 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+	}
+	
+	public void showThanksDialog(Beneficiary ben ) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    // Get the layout inflater
+	    LayoutInflater inflater = getLayoutInflater();
+
+	    // Inflate and set the layout for the dialog
+	    View parent = inflater.inflate(R.layout.dialog_thanks, null);
+	    
+	    TextView name = (TextView) parent.findViewById(R.id.dialog_thanks__name_txt);
+	    name.setText(ben.getIme() + " " + ben.getPrezime());
+	    
+	    TextView number = (TextView) parent.findViewById(R.id.dialog_thanks__nbr_txt_value);
+	    number.setText(ben.getSms());
+	    
+	    TextView message = (TextView) parent.findViewById(R.id.dialog_thanks__message_txt_value);
+	    TextView messageTxt = (TextView) parent.findViewById(R.id.dialog_thanks__message_txt);
+	    if (ben.getRedni_broj()==null || ben.getRedni_broj().trim().equals("")) {
+	    	message.setVisibility(View.GONE);
+	    	messageTxt.setVisibility(View.GONE);
+	    } else {
+	    	message.setText(ben.getRedni_broj());
+	    }
+	    
+	    
+	    
+	    // Pass null as the parent view because its going in the dialog layout
+	    builder.setView(parent);
+	    
+	    builder.create().show();;
+
 	}
 
 	@SuppressLint("NewApi")

@@ -4,9 +4,10 @@ import java.util.List;
 
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.SendSms;
+import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import android.app.Activity;
 import android.content.Context;
-import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -60,9 +61,9 @@ public class BeneficiaryAdapter extends BaseAdapter {
 		
 		ImageLoader.getInstance().displayImage(benificiary.getSlika(), image);
 		
+		
 		TextView name = (TextView) convertView.findViewById(R.id.main_list_item__name);
 		name.setText(benificiary.getIme() + "\n" + benificiary.getPrezime());
-		
 		Button sendSMSButton = (Button) convertView.findViewById(R.id.main_list_item__send_sms_btn);
 		
 		sendSMSButton.setOnClickListener(new OnClickListener() {
@@ -70,6 +71,8 @@ public class BeneficiaryAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(context, "Saljem poruku", Toast.LENGTH_LONG).show();
+				//Test
+//				((MainActivity) context).showThanksDialog(benificiary);
 				new SendSms().send(context, benificiary);
 			}
 		});
