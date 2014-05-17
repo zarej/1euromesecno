@@ -1,3 +1,3 @@
 Social Change Hackathon
 
-Hajde pomognemo deci
+Hajde da pomognemo deci
