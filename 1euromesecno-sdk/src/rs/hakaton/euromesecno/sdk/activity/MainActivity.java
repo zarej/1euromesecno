@@ -15,6 +15,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -31,8 +32,8 @@ public class MainActivity extends ActionBarActivity {
 	
 	private static final int MENU_ITEM_SHARE = 1;
 	private static final int MENU_ITEM_ABOUT = 2;
-	
 	public static final String EXTRA_BENS = "extra_bens";
+	public static final String SELECTED_LIST_ITEM = "euromesecno.selectedBeneficiary";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -205,8 +206,9 @@ public class MainActivity extends ActionBarActivity {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
-					// TODO Auto-generated method stub
-					
+					Intent intent = new Intent(view.getContext(), InfoActivity.class);
+					intent.putExtra(MainActivity.SELECTED_LIST_ITEM, (Parcelable) parent.getItemAtPosition(position));
+					view.getContext().startActivity(intent);
 				}
 			});
 

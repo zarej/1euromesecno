@@ -2,8 +2,7 @@ package rs.hakaton.euromesecno.sdk.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-public class Beneficiary implements Parcelable {
+public class Beneficiary implements Parcelable{
 	public Beneficiary(String ime, String prezime, String godine, String sms,
 			String redni_broj, String slika, String info) {
 		super();
@@ -90,4 +89,16 @@ public class Beneficiary implements Parcelable {
 
 	};
 
+	
+	public Beneficiary(Parcel in){
+    	ime = in.readString();
+		prezime = in.readString();
+		godine = in.readString();
+		sms = in.readString();
+		redni_broj = in.readString();
+		slika = in.readString();
+		info = in.readString();
+    }
+	
+	
 }

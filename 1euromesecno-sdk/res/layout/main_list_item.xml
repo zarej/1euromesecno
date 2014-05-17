@@ -42,6 +42,7 @@
 
         <Button
             android:id="@+id/main_list_item__send_sms_btn"
+            android:focusable="false"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"

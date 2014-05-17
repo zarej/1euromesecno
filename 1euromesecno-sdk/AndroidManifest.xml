@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="andrors.hakaton.euromesecno.sdk.activity.InfoActivityoActivity"
+            android:name="andrors.hakaton.euromesecno.sdk.activity.InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
     </application>
