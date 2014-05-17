@@ -1,6 +1,6 @@
 package rs.hakaton.euromesecno.sdk.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
@@ -19,10 +19,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class BeneficiaryAdapter extends BaseAdapter {
 	
-	private ArrayList<Beneficiary> benificiaries;
+	private List<Beneficiary> benificiaries;
 	Context context;
 	
-	public BeneficiaryAdapter(ArrayList<Beneficiary> benificiaries, Context context) {
+	public BeneficiaryAdapter(List<Beneficiary> benificiaries, Context context) {
 		this.benificiaries = benificiaries;
 		this.context = context;
 	}
