@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -14,11 +14,19 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        	<item name="android:actionBarStyle">@style/euroMesecnoActionBar</item>
+        <item name="android:actionBarStyle">@style/euroMesecnoActionBar</item>
     </style>
 
-    <style name="euroMesecnoActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        	<item name="android:background">@color/title</item>
+    <style name="euroMesecnoActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@color/title</item>
+        <item name="android:titleTextStyle">@style/euroMesecnoTitleTextStyle</item>
     </style>
+
+    <style name="euroMesecnoTitleTextStyle" >
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

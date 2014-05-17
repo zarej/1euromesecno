@@ -9,6 +9,8 @@ import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class SplashActivity extends ActionBarActivity  implements
@@ -16,6 +18,9 @@ BeneficiaryServiceResponseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    	requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         

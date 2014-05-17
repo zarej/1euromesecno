@@ -12,6 +12,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -38,6 +39,8 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -148,11 +151,20 @@ public class MainActivity extends ActionBarActivity {
 			
 			switch (item.getItemId()) {
 			case MENU_ITEM_SHARE:
+				Intent sharingIntent = new Intent(
+						android.content.Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+						getString(R.string.share_subject));
+				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+						getString(R.string.share_message));
+				startActivity(Intent.createChooser(sharingIntent,
+						getString(R.string.share_via)));
 				break;
 			case MENU_ITEM_ABOUT:
 				break;
 			}
-			
+
 			return false;
 		}
 	};

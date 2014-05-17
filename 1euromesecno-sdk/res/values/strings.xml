@@ -15,4 +15,7 @@
 	<string name="info_dialog_negative_btn">Ne</string>
 	<string name="info_dialog_positive_btn">Da</string>
 	<string name="info_dialog_message">Poruka će Vam biti naplaćena. Da li želite da pošaljete pomoć putem sms-a?</string>
+	<string name="share_message">Share poruka</string>
+	<string name="share_subject">Share subject</string>
+	<string name="share_via">Podeli pomoću</string>
 </resources>
