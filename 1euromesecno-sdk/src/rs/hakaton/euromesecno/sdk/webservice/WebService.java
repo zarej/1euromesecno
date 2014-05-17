@@ -68,14 +68,14 @@ public class WebService implements RequestListener {
 		}
 	}
 	
-	private RequestHandler getRequestHandler() {
+	protected RequestHandler getRequestHandler() {
 		if (handler == null) {
 			handler = new RequestHandler(this);
 		}
 		return handler;
 	}
 	
-	private boolean isJSONValid(String test) {
+	protected boolean isJSONValid(String test) {
 		try {
 			new JSONObject(test);
 		} catch (JSONException ex) {
