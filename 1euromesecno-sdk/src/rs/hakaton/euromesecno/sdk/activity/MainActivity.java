@@ -8,6 +8,7 @@ import rs.hakaton.euromesecno.sdk.adapter.BeneficiaryAdapter;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +31,10 @@ public class MainActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+			
+			// setting titlebar color here, because it's too involved to do it properly for now :)
+//			android.support.v7.app.ActionBar titleBar = getSupportActionBar();
+//			titleBar.setBackgroundDrawable(getResources().getColor(R.color.title));
 		}
 	}
 

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:background="@color/list_item_bg" >
 
     <ImageView
         android:id="@+id/main_list_item__image"
@@ -21,6 +22,7 @@
         android:id="@+id/main_list_item__send_sms_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/button"
         android:text="Button" />
 
 </LinearLayout>
