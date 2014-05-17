@@ -70,7 +70,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(context, "Saljem poruku", Toast.LENGTH_LONG).show();
-				new SendSms().send(context, benificiary.getSms(), benificiary.getRedni_broj());
+				new SendSms().send(context, benificiary);
 			}
 		});
 		
