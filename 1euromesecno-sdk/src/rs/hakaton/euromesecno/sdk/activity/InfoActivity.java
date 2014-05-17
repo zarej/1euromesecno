@@ -113,6 +113,15 @@ public class InfoActivity extends ActionBarActivity {
 			hm.put(beneficiary.getSms(), R.id.info_sms_number);
 			hm.put(beneficiary.getRedni_broj(), R.id.info_sms_text);
 			hm.put(beneficiary.getInfo(), R.id.info_text);
+			hm.put("123456789", R.id.info_domestic_account);
+			hm.put("Vojvođanska Banka", R.id.info_domestic_bank);
+			hm.put("Pera Perić", R.id.info_domestic_account_holder);
+			hm.put("MorganChase LLC", R.id.info_foreign_bank_account);
+			hm.put("123456789", R.id.info_foreign_bank_swift);
+			hm.put("379372891739732937918793", R.id.info_foreign_bank_iban);
+			hm.put("pera@peric.rs", R.id.info_email);
+			hm.put("065-115-123", R.id.info_phone);
+			hm.put("www.pera.rs", R.id.info_text);
 			
 			Iterator it =  hm.entrySet().iterator();
 			
