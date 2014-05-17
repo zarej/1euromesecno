@@ -6,5 +6,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="open_data_url_json">http://opendata.socrata.com/resource/4pse-n3qk.json</string>
-
+    <string name="share_btn">Podeli</string>
+    <string name="about_btn">O projektu</string>
+	<string name="thanks_dialog_title">HVALA</string>
+	<string name="thanks_dialog_status">Poruka poslata:</string>
+	<string name="thanks_dialog_sms_nbr">SMS broj:</string>
+	<string name="thanks_dialog_sms_txtr">Tekst:</string>
 </resources>

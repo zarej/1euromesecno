@@ -8,6 +8,7 @@ import rs.hakaton.euromesecno.sdk.adapter.BeneficiaryAdapter;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +22,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
+	
+	private static final int MENU_ITEM_SHARE = 1;
+	private static final int MENU_ITEM_ABOUT = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +37,48 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		
+		// Create the search view
+		menu.add(Menu.NONE, MENU_ITEM_SHARE, Menu.NONE, getString(R.string.share_btn))
+		.setIcon(R.drawable.ic_launcher)
+		.setOnMenuItemClickListener(onMenuItemclick)
+		.setShowAsAction(
+		MenuItem.SHOW_AS_ACTION_IF_ROOM
+		| MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+
+		menu.add(Menu.NONE, MENU_ITEM_ABOUT, Menu.NONE, getString(R.string.about_btn))
+		.setIcon(R.drawable.ic_launcher)
+		.setOnMenuItemClickListener(onMenuItemclick)
+		.setShowAsAction(
+		MenuItem.SHOW_AS_ACTION_IF_ROOM
+		| MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+
+		return super.onCreateOptionsMenu(menu);
+		
 	}
+	
+	MenuItem.OnMenuItemClickListener onMenuItemclick = new MenuItem.OnMenuItemClickListener() {
+		
+		@Override
+		public boolean onMenuItemClick(MenuItem item) {
+			// TODO Auto-generated method stub
+			
+			switch (item.getItemId()) {
+			case MENU_ITEM_SHARE:
+				break;
+			case MENU_ITEM_ABOUT:
+				break;
+			}
+			
+			return false;
+		}
+	};
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -82,26 +121,6 @@ public class MainActivity extends ActionBarActivity {
 				}
 			});
 
-			ArrayList<Beneficiary> benificiaries = new ArrayList<Beneficiary>();
-			benificiaries
-					.add(new Beneficiary(
-							"Zarko",
-							"Jevtic",
-							"82",
-							"2245",
-							"2",
-							"http://www.google.rs/imgres?imgurl=https%3A%2F%2Fforum.ceviz.net%2Fattachments%2Fphp%2F10863d1321713473-resim-boyutlandirma-phpthumb_generated_thumbnailjpgrererjpg&imgrefurl=https%3A%2F%2Fforum.ceviz.net%2Fphp%2F112609-resim-boyutlandirma.html&h=300&w=300&tbnid=Ue4TrwIjnMbdpM%3A&zoom=1&docid=0nAY4mKVzT5kOM&ei=q7B2U8LkDcasPOPNgPAC&tbm=isch&client=ubuntu&ved=0CFYQMygFMAU&iact=rc&uact=3&dur=883&page=1&start=0&ndsp=15",
-							""));
-			benificiaries
-					.add(new Beneficiary(
-							"Marko",
-							"Kacanski",
-							"86",
-							"2245",
-							"2",
-							"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk_9uvmqTovBFoexIgE76i9n8yqfiuFeU6Fo_M7pjLkmBuKRgIiw",
-							""));
-
 			return rootView;
 		}
 
@@ -112,6 +131,7 @@ public class MainActivity extends ActionBarActivity {
 
 			service.getBeneficiaries(getString(R.string.open_data_url_json),
 					this);
+			
 			super.onActivityCreated(savedInstanceState);
 		}
 

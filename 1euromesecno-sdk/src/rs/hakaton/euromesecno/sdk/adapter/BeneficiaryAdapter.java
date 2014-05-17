@@ -3,8 +3,10 @@ package rs.hakaton.euromesecno.sdk.adapter;
 import java.util.List;
 
 import rs.hakaton.euromesecno.sdk.R;
+import rs.hakaton.euromesecno.sdk.SendSms;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.content.Context;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,7 +54,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.main_list_item, parent, false);
 		}
 		
-		Beneficiary benificiary = benificiaries.get(position);
+		final Beneficiary benificiary = benificiaries.get(position);
 		
 		ImageView image = (ImageView) convertView.findViewById(R.id.main_list_item__image);
 		
@@ -68,6 +70,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(context, "Saljem poruku", Toast.LENGTH_LONG).show();
+				new SendSms().send(context, benificiary.getSms(), benificiary.getRedni_broj());
 			}
 		});
 		
