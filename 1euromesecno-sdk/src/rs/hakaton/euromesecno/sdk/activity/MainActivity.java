@@ -75,10 +75,11 @@ public class MainActivity extends ActionBarActivity {
             ListView list = (ListView) rootView.findViewById(R.id.main_list);
             
             ArrayList<Beneficiary> benificiaries = new ArrayList<Beneficiary>();
-//            benificiaries.add(new )
+            benificiaries.add(new Beneficiary("Zarko", "Jevtic", "82", "2245", "2", "http://www.google.rs/imgres?imgurl=https%3A%2F%2Fforum.ceviz.net%2Fattachments%2Fphp%2F10863d1321713473-resim-boyutlandirma-phpthumb_generated_thumbnailjpgrererjpg&imgrefurl=https%3A%2F%2Fforum.ceviz.net%2Fphp%2F112609-resim-boyutlandirma.html&h=300&w=300&tbnid=Ue4TrwIjnMbdpM%3A&zoom=1&docid=0nAY4mKVzT5kOM&ei=q7B2U8LkDcasPOPNgPAC&tbm=isch&client=ubuntu&ved=0CFYQMygFMAU&iact=rc&uact=3&dur=883&page=1&start=0&ndsp=15", ""));
+            benificiaries.add(new Beneficiary("Marko", "Kacanski", "86", "2245", "2", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk_9uvmqTovBFoexIgE76i9n8yqfiuFeU6Fo_M7pjLkmBuKRgIiw", ""));
             
-//            BeneficiaryAdapter adapter = new BeneficiaryAdapter(benificiaries, getActivity());
-            
+            BeneficiaryAdapter adapter = new BeneficiaryAdapter(benificiaries, getActivity());
+            list.setAdapter(adapter);
             
             return rootView;
         }

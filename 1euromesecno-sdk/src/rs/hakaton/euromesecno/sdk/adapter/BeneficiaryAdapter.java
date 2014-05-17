@@ -56,7 +56,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 		
 		ImageView image = (ImageView) convertView.findViewById(R.id.main_list_item__image);
 		
-		ImageLoader.getInstance().displayImage("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTEdXpBNGukqrFy57it43IL1n9QsbY8tkQB2pCEvsm55qa6zMzT5w", image);
+		ImageLoader.getInstance().displayImage(benificiary.getSlika(), image);
 		
 		TextView name = (TextView) convertView.findViewById(R.id.main_list_item__name);
 		name.setText(benificiary.getIme() + " " + benificiary.getPrezime());

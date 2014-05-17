@@ -1,8 +1,14 @@
 package rs.hakaton.euromesecno.sdk.beneficiaryservice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 import android.util.Log;
+import rs.hakaton.euromesecno.sdk.model.Beneficiaries;
+import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import rs.hakaton.euromesecno.sdk.webservice.OnSettingsResponseListener;
 import rs.hakaton.euromesecno.sdk.webservice.WebService;
 
@@ -27,7 +33,7 @@ public class BenficiaryService extends WebService {
 			if (isJSONValid(response)) {
 				beneficiaryListener.onBeneficiaryListReturn(parseBeneficiaries(response));
 			} else {
-				beneficiaryListener.onGetSettingsRespondError("Error parsing JSON", response);
+//				beneficiaryListener.onGetSettingsRespondError("Error parsing JSON", response);
 			}
 			break;
 		}
@@ -35,9 +41,8 @@ public class BenficiaryService extends WebService {
 	}
 	
 	private List<Beneficiary> parseBeneficiaries(String jsonResponse) {
-		// TODO Parsing a json response full of Beneficiaries
-		Beneficiary[] bens = new Gson().fromJson(jsonResponse, Beneficiary[].class);
-		return null;
+		Beneficiaries bens = new Gson().fromJson(jsonResponse, Beneficiaries.class);
+		return bens.getBeneficiaries();
 	}
 
 	@Override
