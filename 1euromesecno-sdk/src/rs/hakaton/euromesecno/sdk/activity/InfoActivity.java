@@ -92,7 +92,20 @@ public class InfoActivity extends ActionBarActivity {
 			TextView txt = (TextView)rootView.findViewById(R.id.main_list_item__name);
 			txt.setText(beneficiary.getIme()+"\n"+beneficiary.getPrezime());
 			
+			txt = (TextView)rootView.findViewById(R.id.info_amount);
+			txt.setText("300 000 €");
 			
+			txt = (TextView)rootView.findViewById(R.id.info_problem);
+			txt.setText("Teške bolesti");
+			
+			txt = (TextView)rootView.findViewById(R.id.info_sms_number);
+			txt.setText(beneficiary.getSms());
+			
+			txt = (TextView)rootView.findViewById(R.id.info_sms_text);
+			txt.setText(beneficiary.getRedni_broj());
+			
+			txt = (TextView)rootView.findViewById(R.id.info_text);
+			txt.setText(beneficiary.getInfo());
 			
 			return rootView;
 		}

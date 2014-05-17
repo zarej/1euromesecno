@@ -2,6 +2,8 @@ package rs.hakaton.euromesecno.sdk.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+// implements parceable because we need to fling it across activities
 public class Beneficiary implements Parcelable{
 	public Beneficiary(String ime, String prezime, String godine, String sms,
 			String redni_broj, String slika, String info) {
