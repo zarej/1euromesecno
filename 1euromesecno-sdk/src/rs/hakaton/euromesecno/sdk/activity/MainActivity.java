@@ -201,6 +201,9 @@ public class MainActivity extends ActionBarActivity {
 					false);
 			list = (ListView) rootView.findViewById(R.id.main_list);
 			
+			View headerRoot = inflater.inflate(R.layout.main_list_header, null);
+			
+			list.addHeaderView(headerRoot.findViewById(R.id.random_sms_btn));
 			list.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override

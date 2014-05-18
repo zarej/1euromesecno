@@ -3,31 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    tools:context="rs.hakaton.euromesecno.sdk.MainActivity$PlaceholderFragment" 
-    android:orientation="vertical">
-	
-    <Button
-		        android:id="@+id/random_sms_btn"
-		        android:layout_width="fill_parent"
-		        android:layout_height="40dp"
-		        android:background="@color/button"
-		        android:textSize="23sp"
-		    	android:textColor="@color/list_item_bg"
-		        android:layout_marginLeft="5dp"
-		        android:layout_marginRight="5dp"
-		        android:layout_marginTop="15dp"
-		        android:layout_marginBottom="5dp"
-		        android:text="DONIRAJ SMS NASUMIČNO" />
-    
+    android:orientation="vertical"
+    tools:context="rs.hakaton.euromesecno.sdk.MainActivity$PlaceholderFragment" >
+
+
     <ListView
         android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:divider="@android:color/transparent"
- 		android:dividerHeight="20.0sp">
+        android:dividerHeight="10sp" >
     </ListView>
 
 </LinearLayout>
