@@ -30,10 +30,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:label="@string/app_name_1"
             android:name="rs.hakaton.euromesecno.sdk.activity.MainActivity" >
         </activity>
         <activity
+            android:label="@string/app_name_1"
             android:name="rs.hakaton.euromesecno.sdk.activity.InfoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="rs.hakaton.euromesecno.sdk.activity.MainActivity" />
         </activity>
     </application>
 

@@ -7,4 +7,7 @@
     <dimen name="button_text_size">22sp</dimen>
     <dimen name="button_item_text_size">17sp</dimen>
 	<dimen name="white_box_margin">10dp</dimen>
+	
+	<dimen name="info_text_medium">18sp</dimen>
+	<dimen name="info_left_right_margin">10dp</dimen>
 </resources>

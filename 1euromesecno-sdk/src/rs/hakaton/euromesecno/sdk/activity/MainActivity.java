@@ -20,7 +20,6 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,8 +33,6 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-	private static final int MENU_ITEM_SHARE = 1;
-	private static final int MENU_ITEM_ABOUT = 2;
 	public static final String EXTRA_BENS = "extra_bens";
 	public static final String SELECTED_LIST_ITEM = "euromesecno.selectedBeneficiary";
 
@@ -43,8 +40,6 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment())
@@ -123,51 +118,15 @@ public class MainActivity extends ActionBarActivity {
 
 	}
 
-	@SuppressLint("NewApi")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
-		// Create the search view
-		menu.add(Menu.NONE, MENU_ITEM_SHARE, Menu.NONE, getString(R.string.share_btn))
-				.setIcon(R.drawable.ic_launcher)
-				.setOnMenuItemClickListener(onMenuItemclick)
-				.setShowAsAction(
-						MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-
-		menu.add(Menu.NONE, MENU_ITEM_ABOUT, Menu.NONE, getString(R.string.about_btn))
-				.setIcon(R.drawable.ic_launcher)
-				.setOnMenuItemClickListener(onMenuItemclick)
-				.setShowAsAction(
-						MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-
 		return super.onCreateOptionsMenu(menu);
 
 	}
-
-	MenuItem.OnMenuItemClickListener onMenuItemclick = new MenuItem.OnMenuItemClickListener() {
-
-		@Override
-		public boolean onMenuItemClick(MenuItem item) {
-
-			switch (item.getItemId()) {
-			case MENU_ITEM_SHARE:
-				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-				sharingIntent.setType("text/plain");
-				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-						getString(R.string.share_subject));
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
-				startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
-				break;
-			case MENU_ITEM_ABOUT:
-				break;
-			}
-
-			return false;
-		}
-	};
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -188,7 +147,8 @@ public class MainActivity extends ActionBarActivity {
 			android.view.View.OnClickListener {
 
 		private ListView list;
-		private Button randomSmsButton;
+		private View randomSmsButton;
+		private ArrayList<Beneficiary> beneficiaries;
 
 		public PlaceholderFragment() {
 
@@ -197,14 +157,17 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+			
 			list = (ListView) rootView.findViewById(R.id.main_list);
 			
 			View headerRoot = inflater.inflate(R.layout.main_list_header, null);
 			
+			
 			list.addHeaderView(headerRoot.findViewById(R.id.random_sms_btn));
 
-			randomSmsButton = (Button) rootView.findViewById(R.id.random_sms_btn);
+			randomSmsButton = headerRoot.findViewById(R.id.random_sms_btn);
 			randomSmsButton.setOnClickListener(this);
+			
 
 			list.setOnItemClickListener(new OnItemClickListener() {
 
@@ -223,18 +186,20 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
-
-			ArrayList<Beneficiary> beneficiaries = getActivity().getIntent().getParcelableArrayListExtra(
-					EXTRA_BENS);
-
-			if (beneficiaries != null) {
-				BeneficiaryAdapter adapter = new BeneficiaryAdapter(beneficiaries, getActivity());
-				list.setAdapter(adapter);
-			} else {
-
-				BenficiaryService service = new BenficiaryService();
-
-				service.getBeneficiaries(getString(R.string.open_data_url_json), this);
+			
+			if (beneficiaries == null) {
+				if (getActivity().getIntent().getParcelableArrayListExtra(
+						EXTRA_BENS) != null) {
+					beneficiaries = getActivity().getIntent().getParcelableArrayListExtra(
+							EXTRA_BENS);
+					BeneficiaryAdapter adapter = new BeneficiaryAdapter(beneficiaries, getActivity());
+					list.setAdapter(adapter);
+				} else {
+					
+					BenficiaryService service = new BenficiaryService();
+					
+					service.getBeneficiaries(getString(R.string.open_data_url_json), this);
+				}
 			}
 
 			super.onActivityCreated(savedInstanceState);
@@ -243,6 +208,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onBeneficiaryListReturn(ArrayList<Beneficiary> beneficiaries) {
 			// TODO Auto-generated method stub
+			this.beneficiaries = beneficiaries;
 			BeneficiaryAdapter adapter = new BeneficiaryAdapter(beneficiaries, getActivity());
 			list.setAdapter(adapter);
 
