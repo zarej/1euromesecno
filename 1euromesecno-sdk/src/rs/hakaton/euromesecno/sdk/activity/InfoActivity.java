@@ -1,5 +1,9 @@
 package rs.hakaton.euromesecno.sdk.activity;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import rs.hakaton.euromesecno.sdk.R;
@@ -74,6 +78,11 @@ public class InfoActivity extends ActionBarActivity {
 
 		public PlaceholderFragment() {
 		}
+		
+		private void setText(View rootView,Object id, Object txt){
+			TextView textView = (TextView) rootView.findViewById( (Integer) id);
+			textView.setText((String) txt);
+		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,7 +101,36 @@ public class InfoActivity extends ActionBarActivity {
 			TextView txt = (TextView)rootView.findViewById(R.id.main_list_item__name);
 			txt.setText(beneficiary.getIme()+"\n"+beneficiary.getPrezime());
 			
+//			txt = (TextView)rootView.findViewById(R.id.info_amount);
+//			txt.setText("300 000 €");
 			
+			
+			
+			HashMap<String, Integer> hm = new HashMap<String, Integer>();
+			
+			hm.put("200€", R.id.info_amount);
+			hm.put("Teške Bolesti", R.id.info_problem);
+			hm.put(beneficiary.getSms(), R.id.info_sms_number);
+			hm.put(beneficiary.getRedni_broj(), R.id.info_sms_text);
+			hm.put(beneficiary.getInfo(), R.id.info_text);
+			hm.put("123456789", R.id.info_domestic_account);
+			hm.put("Vojvođanska Banka", R.id.info_domestic_bank);
+			hm.put("Pera Perić", R.id.info_domestic_account_holder);
+			hm.put("MorganChase LLC", R.id.info_foreign_bank_account);
+			hm.put("123456789", R.id.info_foreign_bank_swift);
+			hm.put("379372891739732937918793", R.id.info_foreign_bank_iban);
+			hm.put("pera@peric.rs", R.id.info_email);
+			hm.put("065-115-123", R.id.info_phone);
+			hm.put("www.pera.rs", R.id.info_text);
+			
+			Iterator it =  hm.entrySet().iterator();
+			
+			while (it.hasNext()) {
+				Map.Entry me= (Map.Entry) it.next();
+				
+				setText(rootView, me.getValue(), me.getKey());
+				
+			}
 			
 			return rootView;
 		}
