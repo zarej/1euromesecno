@@ -26,6 +26,7 @@
                 android:layout_marginRight="@dimen/info_left_right_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -43,6 +44,7 @@
                         android:id="@+id/info_amount"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/info_text_medium"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -61,6 +63,7 @@
                         android:id="@+id/info_problem"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/info_text_medium"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -79,18 +82,21 @@
                         android:id="@+id/info_sms_number"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/info_text_medium"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/info_text_medium"
+                        android:textSize="@dimen/info_text_medium"                        
                         android:text=" text: " />
 
                     <TextView
                         android:id="@+id/info_sms_text"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/info_text_medium"
+                        android:textColor="@color/info_color_text_2"
+                        android:text="Bez teksta"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
@@ -98,16 +104,22 @@
             <include layout="@layout/line" />
 
             <TextView
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/info_text"
+                android:textSize="@dimen/info_text_main"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content" />
 
             <include layout="@layout/line" />
 
             <LinearLayout
+                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -118,7 +130,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DINARSKI RAUČN" />
+                        android:textSize="@dimen/info_text_medium"
+                        android:text="DINARSKI RAČUN" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,6 +143,7 @@
                         android:id="@+id/info_domestic_account"
                         android:layout_width="wrap_content"
                         android:text="racun"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -158,17 +172,20 @@
                     <TextView
                         android:id="@+id/info_domestic_account_holder"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/info_text_medium"
                         android:text="DEVIZNI RAČUN" />
                 </LinearLayout>
 
@@ -181,6 +198,7 @@
                         android:id="@+id/info_foreign_bank_account"
                         android:layout_width="wrap_content"
                         android:text="racun dev"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -197,6 +215,7 @@
                     <TextView
                         android:id="@+id/info_foreign_bank_swift"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -213,6 +232,7 @@
                     <TextView
                         android:id="@+id/info_foreign_bank_iban"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
@@ -222,6 +242,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -232,6 +254,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/info_text_medium"
                         android:text="KONTAKT" />
                 </LinearLayout>
 
@@ -248,6 +271,7 @@
                     <TextView
                         android:id="@+id/info_email"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -263,6 +287,7 @@
 
                     <TextView
                         android:id="@+id/info_phone"
+                        android:textColor="@color/info_color_text_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -281,6 +306,7 @@
                         android:id="@+id/info_site"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="#113ca9"
                         android:text="THE LINK" />
                 </LinearLayout>
             </LinearLayout>

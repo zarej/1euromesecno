@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             android:orientation="horizontal" >
 
             <ImageView
@@ -23,11 +24,7 @@
                 android:layout_margin="@dimen/white_box_margin"
                 android:src="@drawable/ic_launcher" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:background="@color/app_bg" />
+            
         </LinearLayout>
 
         <LinearLayout
@@ -51,7 +48,7 @@
                 android:textAllCaps="true"
                 android:text="Medium Text\ndsdsds"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="@dimen/button_item_text_size" />
+                android:textSize="@dimen/button_item_text_size_larger" />
 <!-- <View
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -68,7 +65,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="14dp"
                 android:paddingBottom="1dp"
                 android:paddingTop="1dp"
                 android:text="DONIRAJ SMS"
