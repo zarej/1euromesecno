@@ -31,7 +31,11 @@
         <activity
             android:name="andrors.hakaton.euromesecno.sdk.activity.InfoActivity"
             android:label="@string/title_activity_info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="rs.hakaton.euromesecno.sdk.activity.MainActivity" />
         </activity>
+
     </application>
 
 </manifest>

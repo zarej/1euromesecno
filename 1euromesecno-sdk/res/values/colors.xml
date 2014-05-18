@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="button">#f5721b</color>
+    <color name="button_shadow">#dc5800</color>
     <color name="title">#30642a</color>
     <color name="app_bg">#e4e4e4</color> 
     <color name="list_item_bg">#ffffff</color>
     <color name="gray">#fafafa</color>
+    <color name="list_separator">#b9b9b9</color>
+    <color name="white_box_shadow">#c8c8c8</color>
 </resources>
