@@ -1,14 +1,20 @@
 package rs.hakaton.euromesecno;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -26,6 +32,23 @@ BeneficiaryServiceResponseListener {
 //        onBeneficiaryListReturnError("error");
         BenficiaryService service = new BenficiaryService();
         service.getBeneficiaries(getString(R.string.open_data_url_json), this);
+        Log.e("alarm debug", "Pocinjem da zakazujem alarm");
+        scheduleAlarm();
+    }
+    
+    public void scheduleAlarm(){
+    	// set the time at which alarm will fire
+    	// current time + 1 minute
+    	Long time = new GregorianCalendar().getTimeInMillis()+5*1000;
+    	
+    	Intent intentAlarm = new Intent(this, AlarmReciever.class);
+    	
+    	AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+    	
+    	
+    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, 10*1000, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+//    	alarmManager.set(AlarmManager.RTC_WAKEUP,time, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    	Log.e("alarm debug", "Zakazao alarm");
     }
 
 	@Override
