@@ -34,6 +34,10 @@
             android:label="@string/app_name_1"
             android:name="rs.hakaton.euromesecno.sdk.activity.MainActivity" >
         </activity>
+        
+        <activity android:name="rs.hakaton.euromesecno.sdk.activity.AboutActivity">
+            
+        </activity>
         <activity
             android:label="@string/app_name_1"
             android:name="rs.hakaton.euromesecno.sdk.activity.InfoActivity" >

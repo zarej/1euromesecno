@@ -88,6 +88,9 @@ public class InfoActivity extends ActionBarActivity {
 				startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
 				break;
 			case MENU_ITEM_ABOUT:
+				Intent aboutIntent = new Intent(InfoActivity.this, AboutActivity.class);
+				
+				startActivity(aboutIntent);
 				break;
 			}
 

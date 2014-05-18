@@ -35,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
 
 	public static final String EXTRA_BENS = "extra_bens";
 	public static final String SELECTED_LIST_ITEM = "euromesecno.selectedBeneficiary";
+	private static final int MENU_ITEM_ABOUT = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +124,34 @@ public class MainActivity extends ActionBarActivity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		menu.add(Menu.NONE, MENU_ITEM_ABOUT, Menu.NONE,
+				getString(R.string.about_btn))
+				.setIcon(R.drawable.info)
+				.setOnMenuItemClickListener(onMenuItemclick)
+				.setShowAsAction(
+						MenuItem.SHOW_AS_ACTION_IF_ROOM
+								| MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 
 		return super.onCreateOptionsMenu(menu);
 
 	}
+	
+	MenuItem.OnMenuItemClickListener onMenuItemclick = new MenuItem.OnMenuItemClickListener() {
+	
+	public boolean onMenuItemClick(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case MENU_ITEM_ABOUT:
+			Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
+			
+			startActivity(aboutIntent);
+			break;
+		}
+
+		return false;
+	}
+	};
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -246,5 +271,5 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 	}
-
+	
 }
