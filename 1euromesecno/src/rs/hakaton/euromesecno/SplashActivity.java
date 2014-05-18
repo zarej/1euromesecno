@@ -39,14 +39,15 @@ BeneficiaryServiceResponseListener {
     public void scheduleAlarm(){
     	// set the time at which alarm will fire
     	// current time + 1 minute
-    	Long time = new GregorianCalendar().getTimeInMillis()+5*1000;
+    	Long time = new GregorianCalendar().getTimeInMillis();
     	
+    	Long interval = (long) (30*24*60*60*1000);
     	Intent intentAlarm = new Intent(this, AlarmReciever.class);
     	
     	AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
     	
     	
-    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, 10*1000, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, interval, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 //    	alarmManager.set(AlarmManager.RTC_WAKEUP,time, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     	Log.e("alarm debug", "Zakazao alarm");
     }
