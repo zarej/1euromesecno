@@ -9,7 +9,6 @@ import rs.hakaton.euromesecno.sdk.adapter.BeneficiaryAdapter;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -27,7 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -187,9 +186,12 @@ public class MainActivity extends ActionBarActivity {
 			
 			View headerRoot = inflater.inflate(R.layout.main_list_header, null);
 			
+			View footerRoot = inflater.inflate(R.layout.main_list_footer, null);
 			
 			list.addHeaderView(headerRoot.findViewById(R.id.random_sms_btn));
 
+//			list.addFooterView(footerRoot.findViewById(R.id.footer_space));
+			
 			randomSmsButton = headerRoot.findViewById(R.id.random_sms_btn);
 			randomSmsButton.setOnClickListener(this);
 			
