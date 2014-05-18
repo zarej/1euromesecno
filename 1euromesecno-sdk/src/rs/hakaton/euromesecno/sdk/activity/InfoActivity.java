@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -152,7 +153,10 @@ public class InfoActivity extends ActionBarActivity {
 			hm.put("Teške Bolesti", R.id.info_problem);
 			hm.put(beneficiary.getSms(), R.id.info_sms_number);
 			hm.put(beneficiary.getRedni_broj(), R.id.info_sms_text);
-			hm.put(beneficiary.getInfo(), R.id.info_text);
+//			hm.put(beneficiary.getInfo(), R.id.info_text);
+			
+			
+			hm.put(Html.fromHtml(getString(R.string.info_demo_txt)).toString(), R.id.info_text);
 			hm.put("12345679089", R.id.info_domestic_account);
 			hm.put("Vojvođanska Banka", R.id.info_domestic_bank);
 			hm.put("Pera Perić", R.id.info_domestic_account_holder);
