@@ -46,8 +46,8 @@ BeneficiaryServiceResponseListener {
     	AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
     	
     	
-    	
-    	alarmManager.set(AlarmManager.RTC_WAKEUP,time, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, 10*1000, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+//    	alarmManager.set(AlarmManager.RTC_WAKEUP,time, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     	Log.e("alarm debug", "Zakazao alarm");
     }
 
