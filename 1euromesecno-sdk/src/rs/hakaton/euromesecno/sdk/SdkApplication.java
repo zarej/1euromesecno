@@ -13,14 +13,15 @@ public class SdkApplication extends Application {
 
 		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
 				.cacheInMemory(true).cacheOnDisc(true)
-				.showImageOnLoading(R.drawable.ic_launcher)
-				.build()
-				;
+				.showImageOnLoading(R.drawable.ic_launcher).build();
 		// Create global configuration and initialize ImageLoader with this
 		// configuration
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				getApplicationContext()).defaultDisplayImageOptions(
-				defaultOptions).build();
+				getApplicationContext())
+
+		.defaultDisplayImageOptions(defaultOptions)
+//		.writeDebugLogs()
+		.build();
 		ImageLoader.getInstance().init(config);
 	}
 }

@@ -188,7 +188,7 @@ public class MainActivity extends ActionBarActivity {
 			
 			View footerRoot = inflater.inflate(R.layout.main_list_footer, null);
 			
-			list.addHeaderView(headerRoot.findViewById(R.id.random_sms_btn));
+//			list.addHeaderView(headerRoot.findViewById(R.id.random_sms_btn));
 
 //			list.addFooterView(footerRoot.findViewById(R.id.footer_space));
 			
@@ -259,7 +259,7 @@ public class MainActivity extends ActionBarActivity {
 
 			int num = list.getAdapter().getCount();
 			Random rnd = new Random();
-			int position = rnd.nextInt(num); // returns range 0-10
+			int position = 1 + rnd.nextInt(num-1); // returns range 1-listItemsCount
 			final Beneficiary benificiary = (Beneficiary) list.getAdapter().getItem(position);
 
 			((MainActivity) getActivity()).showInfoDialog(-1, new DialogInterface.OnClickListener() {
