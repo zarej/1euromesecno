@@ -20,6 +20,7 @@
 	<string name="share_message">Share poruka</string>
 	<string name="share_subject">Share subject</string>
 	<string name="share_via">Podeli pomoću:</string>
+	<string name="info_sms_no_text">Bez teksta</string>
 	<string name="info_demo_txt"><![CDATA[
 	    Sandri Svorcan (23) iz Subotice potrebna je hitna transplantacija srca, a da bi dospela na listu čekanja AKH klinike u Beču, nedostaje 85.000 evra.<br>
 Sandra je rođena sa srčanom manom, operisana je u Beogradu 1994, kasnije joj je ugrađen pejsmejker, a zatim je rađena zamena tog uređaja umesto koga sada ima defibrilator.<br>

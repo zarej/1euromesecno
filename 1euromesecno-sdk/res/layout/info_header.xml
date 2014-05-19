@@ -57,10 +57,10 @@
                 android:layout_marginBottom="1dp" /> -->
 
             <Button
-                android:id="@+id/main_list_item__send_sms_btn"
+                android:id="@+id/info__send_sms_btn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/button_shapes"
+                android:background="@drawable/button_selector"
                 android:focusable="false"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"

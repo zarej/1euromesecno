@@ -1,6 +1,5 @@
-package rs.hakaton.euromesecno.sdk;
+package rs.hakaton.euromesecno.sdk.util;
 
-import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -72,7 +71,9 @@ public class SendSms {
 				public void onReceive(Context context, Intent intent) {
 					Toast.makeText(c.getApplicationContext(), "Deliverd",
 							Toast.LENGTH_LONG).show();
-					((MainActivity) c).showThanksDialog(ben);
+					
+					CustomDialog.getInstance().showThanksDialog(ben,(Activity) c);
+					
 				}
 
 			}, new IntentFilter(DELIVERED));

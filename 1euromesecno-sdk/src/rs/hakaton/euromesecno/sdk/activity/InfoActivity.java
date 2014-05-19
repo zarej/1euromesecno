@@ -6,17 +6,23 @@ import java.util.Map;
 
 import rs.hakaton.euromesecno.sdk.R;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import rs.hakaton.euromesecno.sdk.util.CustomDialog;
+import rs.hakaton.euromesecno.sdk.util.SendSms;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -120,6 +126,8 @@ public class InfoActivity extends ActionBarActivity {
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
+		private Beneficiary beneficiary;
+
 		public PlaceholderFragment() {
 		}
 		
@@ -136,7 +144,7 @@ public class InfoActivity extends ActionBarActivity {
 			
 			Intent i = getActivity().getIntent();
 			
-			Beneficiary beneficiary = (Beneficiary) i.getParcelableExtra(MainActivity.SELECTED_LIST_ITEM);
+			beneficiary = (Beneficiary) i.getParcelableExtra(MainActivity.SELECTED_LIST_ITEM);
 			
 			ImageView img = (ImageView) rootView.findViewById(R.id.main_list_item__image);
 			
@@ -148,15 +156,19 @@ public class InfoActivity extends ActionBarActivity {
 //			txt = (TextView)rootView.findViewById(R.id.info_amount);
 //			txt.setText("300 000 €");
 			
+			Button sendSmsButton = (Button) rootView.findViewById(R.id.info__send_sms_btn);
 			
+			sendSmsButton.setOnClickListener(sendSmsListener);
+			
+			String infoSmsText = TextUtils.isEmpty(beneficiary.getRedni_broj())? "" : beneficiary.getRedni_broj();
 			
 			HashMap<String, Integer> hm = new HashMap<String, Integer>();
 			
 			hm.put("200€", R.id.info_amount);
 			hm.put("Teške Bolesti", R.id.info_problem);
 			hm.put(beneficiary.getSms(), R.id.info_sms_number);
-			hm.put(beneficiary.getRedni_broj(), R.id.info_sms_text);
-//			hm.put(beneficiary.getInfo(), R.id.info_text);
+			hm.put(infoSmsText, R.id.info_sms_text);
+			hm.put(beneficiary.getInfo(), R.id.info_text);
 			
 			
 			hm.put(Html.fromHtml(getString(R.string.info_demo_txt)).toString(), R.id.info_text);
@@ -180,6 +192,23 @@ public class InfoActivity extends ActionBarActivity {
 			
 			return rootView;
 		}
+		OnClickListener sendSmsListener = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				CustomDialog.getInstance().showInfoDialog(-1, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						new SendSms().send(getActivity(), beneficiary);
+					}
+				}, getActivity());
+				
+			}
+		};
 	}
+	
+	
 
 }

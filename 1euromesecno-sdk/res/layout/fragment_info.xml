@@ -96,7 +96,6 @@
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/info_text_medium"
                         android:textColor="@color/info_color_text_2"
-                        android:text="Bez teksta"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>

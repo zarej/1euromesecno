@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Random;
 
 import rs.hakaton.euromesecno.sdk.R;
-import rs.hakaton.euromesecno.sdk.SendSms;
 import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import rs.hakaton.euromesecno.sdk.util.CustomDialog;
+import rs.hakaton.euromesecno.sdk.util.SendSms;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
@@ -75,13 +76,13 @@ public class BeneficiaryAdapter extends BaseAdapter {
 					Random rnd = new Random();
 					int position = 1 + rnd.nextInt(num-1); // returns range 1-listItemsCount
 					final Beneficiary benificiaryRandom = benificiaries.get(position);
-					((MainActivity) context).showInfoDialog(-1, new DialogInterface.OnClickListener() {
+					CustomDialog.getInstance().showInfoDialog(-1, new DialogInterface.OnClickListener() {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							new SendSms().send(context, benificiaryRandom);
 						}
-					});
+					}, (MainActivity) context);
 				}
 			});
 			
@@ -107,13 +108,13 @@ public class BeneficiaryAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					((MainActivity) context).showInfoDialog(-1, new DialogInterface.OnClickListener() {
+					CustomDialog.getInstance().showInfoDialog(-1, new DialogInterface.OnClickListener() {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							new SendSms().send(context, benificiary);
 						}
-					});
+					}, (MainActivity) context);
 				}
 			});
 		}
