@@ -49,9 +49,15 @@ public class BenficiaryService extends WebService {
 			JSONArray values = new JSONArray(jsonResponse);
 			
 			for (int i=0; i<values.length(); i++) {
-				
-				Beneficiary bens = new Gson().fromJson(values.getString(i), Beneficiary.class);
-				benseficiaries.add(bens);
+				try {
+					Beneficiary bens = new Gson().fromJson(values.getString(i), Beneficiary.class);
+					benseficiaries.add(bens);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					Log.e("Parsing JOSN", "Ne mgu da isparsiram: " + values.getString(i));
+				}
 			}
 			
 			

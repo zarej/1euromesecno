@@ -68,8 +68,8 @@ BeneficiaryServiceResponseListener {
 	public void onBeneficiaryListReturnError(String error) {
 		Toast.makeText(this, "Probably problem with Open data. Opening demo...", Toast.LENGTH_LONG).show();
 		ArrayList<Beneficiary> beneficiaries = new ArrayList<Beneficiary>();
-		beneficiaries.add(new Beneficiary("Zarkoooo", "Zarkoooo", "31", "1102", "2", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQaadEwWgFZW7Kxryp-tyML1pd0ZN9R6IaKumaNK1s0GpApo3yMNw", "Bla bla"));
-		beneficiaries.add(new Beneficiary("Aleksandra", "Karapandzic", "31", "1102", "2", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQaadEwWgFZW7Kxryp-tyML1pd0ZN9R6IaKumaNK1s0GpApo3yMNw", "Bla bla"));
+		beneficiaries.add(new Beneficiary("Open Data", "Problem", "31", "1102", "2", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQaadEwWgFZW7Kxryp-tyML1pd0ZN9R6IaKumaNK1s0GpApo3yMNw", 
+				"Bla bla", "", "", "", "", "", "", "", "", "", "", "", ""));
 		
 		Intent i = new Intent(SplashActivity.this, MainActivity.class);
 		i.putExtra(MainActivity.EXTRA_BENS, beneficiaries);

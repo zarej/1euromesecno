@@ -22,6 +22,8 @@ public class AboutActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.activity_about, new PlaceholderFragment()).commit();
@@ -44,6 +46,9 @@ public class AboutActivity extends ActionBarActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
+		} else if (id == android.R.id.home) {
+			finish();
+	        return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

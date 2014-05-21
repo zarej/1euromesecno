@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -160,35 +159,60 @@ public class InfoActivity extends ActionBarActivity {
 			
 			sendSmsButton.setOnClickListener(sendSmsListener);
 			
-			String infoSmsText = TextUtils.isEmpty(beneficiary.getRedni_broj())? "" : beneficiary.getRedni_broj();
+//			String infoSmsText = TextUtils.isEmpty(beneficiary.getRedni_broj())? "" : beneficiary.getRedni_broj();
 			
-			HashMap<String, Integer> hm = new HashMap<String, Integer>();
+			HashMap<Integer, String> benHm = new HashMap<Integer, String>();
+			benHm.put(R.id.info_amount, beneficiary.getCena_lecenja());
+			benHm.put(R.id.info_problem, beneficiary.getBolest());
+			benHm.put(R.id.info_sms_number, beneficiary.getSms());
+			benHm.put(R.id.info_sms_text, beneficiary.getRedni_broj());
+			benHm.put(R.id.info_text, Html.fromHtml(beneficiary.getInfo()).toString());
+			benHm.put(R.id.info_domestic_account, beneficiary.getBroj_racuna_domaci());
+			benHm.put(R.id.info_domestic_bank, beneficiary.getDomaca_banka());
+			benHm.put(R.id.info_domestic_account_holder, beneficiary.getBroj_racuna_domaci_ime());
+			benHm.put(R.id.info_foreign_bank_account, beneficiary.getStrana_banka());
+			benHm.put(R.id.info_foreign_bank_swift, beneficiary.getStrana_banka_swift());
+			benHm.put(R.id.info_foreign_bank_iban, beneficiary.getStrana_banka_iban());
+			benHm.put(R.id.info_email, beneficiary.getEmail());
+			benHm.put(R.id.info_phone, beneficiary.getTelefon());
+			benHm.put(R.id.info_site, beneficiary.getSajt());
 			
-			hm.put("200€", R.id.info_amount);
-			hm.put("Teške Bolesti", R.id.info_problem);
-			hm.put(beneficiary.getSms(), R.id.info_sms_number);
-			hm.put(infoSmsText, R.id.info_sms_text);
-			hm.put(beneficiary.getInfo(), R.id.info_text);
-			
-			
-			hm.put(Html.fromHtml(getString(R.string.info_demo_txt)).toString(), R.id.info_text);
-			hm.put("12345679089", R.id.info_domestic_account);
-			hm.put("Vojvođanska Banka", R.id.info_domestic_bank);
-			hm.put("Pera Perić", R.id.info_domestic_account_holder);
-			hm.put("MorganChase LLC", R.id.info_foreign_bank_account);
-			hm.put("1234567-89", R.id.info_foreign_bank_swift);
-			hm.put("379372891739732937918793", R.id.info_foreign_bank_iban);
-			hm.put("pera@peric.rs", R.id.info_email);
-			hm.put("065-115-123", R.id.info_phone);
-			hm.put("www.pera.rs", R.id.info_site);
-			
-			Iterator it =  hm.entrySet().iterator();
+			Iterator<Map.Entry<Integer, String>> it =  benHm.entrySet().iterator();
 			
 			while (it.hasNext()) {
-				Map.Entry me= (Map.Entry) it.next();
+				Map.Entry<Integer, String> me= (Map.Entry<Integer, String>) it.next();
 				Log.d("iteracija", "value=" + me.getValue() + " key=" + me.getKey());
-				setText(rootView, me.getValue(), me.getKey());
+				setText(rootView, me.getKey(), me.getValue());
 			}
+			
+//			HashMap<String, Integer> hm = new HashMap<String, Integer>();
+			
+//			hm.put("200€", R.id.info_amount);
+//			hm.put("Teške Bolesti", R.id.info_problem);
+//			hm.put(beneficiary.getSms(), R.id.info_sms_number);
+//			hm.put(infoSmsText, R.id.info_sms_text);
+//			hm.put(Html.fromHtml(beneficiary.getInfo()).toString(), R.id.info_text);
+			
+			//demo
+//			hm.put(Html.fromHtml(getString(R.string.info_demo_txt)).toString(), R.id.info_text);
+			
+//			hm.put("12345679089", R.id.info_domestic_account);
+//			hm.put("Vojvođanska Banka", R.id.info_domestic_bank);
+//			hm.put("Pera Perić", R.id.info_domestic_account_holder);
+//			hm.put("MorganChase LLC", R.id.info_foreign_bank_account);
+//			hm.put("1234567-89", R.id.info_foreign_bank_swift);
+//			hm.put("379372891739732937918793", R.id.info_foreign_bank_iban);
+//			hm.put("pera@peric.rs", R.id.info_email);
+//			hm.put("065-115-123", R.id.info_phone);
+//			hm.put("www.pera.rs", R.id.info_site);
+			
+//			Iterator it =  hm.entrySet().iterator();
+//			
+//			while (it.hasNext()) {
+//				Map.Entry me= (Map.Entry) it.next();
+//				Log.d("iteracija", "value=" + me.getValue() + " key=" + me.getKey());
+//				setText(rootView, me.getValue(), me.getKey());
+//			}
 			
 			return rootView;
 		}

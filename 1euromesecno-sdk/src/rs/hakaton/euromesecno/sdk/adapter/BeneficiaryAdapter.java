@@ -32,7 +32,7 @@ public class BeneficiaryAdapter extends BaseAdapter {
 	
 	public BeneficiaryAdapter(List<Beneficiary> benificiaries, Context context) {
 		//pos 0 is header
-		this.benificiaries.add(new Beneficiary(null, null, null, null, null, null, null));
+		this.benificiaries.add(null);
 		this.benificiaries.addAll(benificiaries);
 		this.context = context;
 	}
