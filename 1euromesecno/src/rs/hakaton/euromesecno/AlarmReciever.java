@@ -29,7 +29,7 @@ public class AlarmReciever extends BroadcastReceiver {
 
 		PendingIntent pi = PendingIntent.getActivity(context, 0, i, 0);
 		String title = "Dobrota je navika :)";
-		String body = "Donirajte 1 euro i pomozite najugroženijima";
+		String body = "Donirajte 1 SMS najugroženijima";
 		
 		Log.e("alarm debug", "Treba da krene notifikacija");
 		NotificationCompat.Builder mBuilder =

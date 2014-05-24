@@ -3,13 +3,16 @@
     package="rs.hakaton.euromesecno"
     android:versionCode="2"
     android:versionName="1.0" >
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Include next permission if you want to allow UIL to cache images on SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_SMS"></uses-permission>
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.READ_SMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS" >
+    </uses-permission>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -31,30 +34,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="@string/app_name_1"
-            android:name="rs.hakaton.euromesecno.sdk.activity.MainActivity" >
+            android:name="rs.hakaton.euromesecno.sdk.activity.MainActivity"
+            android:label="@string/app_name_1" >
         </activity>
-        
-        <activity android:name="rs.hakaton.euromesecno.sdk.activity.AboutActivity">
-            
+        <activity android:name="rs.hakaton.euromesecno.sdk.activity.AboutActivity" >
         </activity>
         <activity
-            android:label="@string/app_name_1"
-            android:name="rs.hakaton.euromesecno.sdk.activity.InfoActivity" >
+            android:name="rs.hakaton.euromesecno.sdk.activity.InfoActivity"
+            android:label="@string/app_name_1" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="rs.hakaton.euromesecno.sdk.activity.MainActivity" />
         </activity>
-        
-         <receiver android:name="rs.hakaton.euromesecno.AlarmReciever" >
-    	</receiver>
-    	
-         <receiver android:name="rs.hakaton.euromesecno.BootReceiver" >
-	        <intent-filter>
-	            <action android:name="android.intent.action.BOOT_COMPLETED" >
-	            </action>
-	        </intent-filter>
-	    </receiver>
+
+        <receiver android:name="rs.hakaton.euromesecno.AlarmReciever" >
+        </receiver>
+        <receiver android:name="rs.hakaton.euromesecno.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

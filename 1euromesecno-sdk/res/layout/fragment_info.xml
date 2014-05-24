@@ -35,6 +35,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_amount_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_text_medium"
@@ -54,6 +55,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_problem_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_text_medium"
@@ -73,6 +75,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_sms_number_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_text_medium"
@@ -86,10 +89,11 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/info_sms_text_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/info_text_medium"                        
-                        android:text=" text: " />
+                        android:text=" tekst: " />
 
                     <TextView
                         android:id="@+id/info_sms_text"
@@ -100,7 +104,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <include layout="@layout/line" />
+            <include android:id="@+id/separator_info" layout="@layout/line" />
 
             <TextView
                 android:layout_marginLeft="16dp"
@@ -111,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <include layout="@layout/line" />
+            <include android:id="@+id/separator_desc" layout="@layout/line" />
 
             <LinearLayout
                 android:layout_marginBottom="5dp"
@@ -122,6 +126,7 @@
                 android:orientation="vertical" >
 
                 <LinearLayout
+                    android:id="@+id/info_domestic_account_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
@@ -163,7 +168,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        
+                        android:id="@+id/info_domestic_account_holder_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NA IME: " />
@@ -176,6 +181,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/info_foreign_bank_account_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -207,6 +213,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_foreign_bank_swift_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SWIFT: " />
@@ -219,6 +226,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/info_foreign_bank_iban_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
@@ -236,7 +244,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <include layout="@layout/line" />
+            <include android:id="@+id/separator_bank" layout="@layout/line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -246,6 +254,7 @@
                 android:orientation="vertical" >
 
                 <LinearLayout
+                    android:id="@+id/info_contact_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
@@ -263,6 +272,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_email_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email: " />
@@ -280,6 +290,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_phone_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Telefon: " />
@@ -297,6 +308,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/info_site_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Website: " />
@@ -308,6 +320,20 @@
                         android:textColor="#113ca9"
                         android:text="THE LINK" />
                 </LinearLayout>
+                <Button
+                android:id="@+id/info__send_sms_btn_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/button_selector"
+                android:focusable="false"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:layout_marginTop="10dp"
+                android:text="DONIRAJ SMS"
+                android:textColor="@color/list_item_bg"
+                android:textSize="@dimen/button_item_text_size" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

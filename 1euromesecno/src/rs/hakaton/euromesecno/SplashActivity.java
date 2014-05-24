@@ -7,6 +7,7 @@ import rs.hakaton.euromesecno.sdk.activity.MainActivity;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BeneficiaryServiceResponseListener;
 import rs.hakaton.euromesecno.sdk.beneficiaryservice.BenficiaryService;
 import rs.hakaton.euromesecno.sdk.model.Beneficiary;
+import rs.hakaton.euromesecno.sdk.util.SharedPrefernceHelper;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -24,6 +25,11 @@ BeneficiaryServiceResponseListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	
+    	if(!SharedPrefernceHelper.isIconCreated(this)) {
+    		addShortcut();
+    	}
+    	
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
@@ -78,7 +84,26 @@ BeneficiaryServiceResponseListener {
 		
 	}
 
+	private void addShortcut() {
+	    //Adding shortcut for MainActivity 
+	    //on Home screen
+	    Intent shortcutIntent = new Intent(getApplicationContext(),
+	            SplashActivity.class);
 
+	    shortcutIntent.setAction(Intent.ACTION_MAIN);
+
+	    Intent addIntent = new Intent();
+	    addIntent
+	            .putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+	    addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.app_name));
+	    addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+	            Intent.ShortcutIconResource.fromContext(getApplicationContext(),
+	                    R.drawable.ic_launcher));
+
+	    addIntent
+	            .setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+	    getApplicationContext().sendBroadcast(addIntent);
+	}
 
 
 }
