@@ -7,10 +7,10 @@ import android.preference.PreferenceManager;
 public class SharedPrefernceHelper {
 
 	private static final String ICON_CREATED = "icon_created";
+	private static final String ALARM_SET_FIRST_TIME = "alarm_first_time_created";
 	
 	
-	
-	public static void setPreferenceUiVersion(Context c, boolean isCreated) {
+	public static void setIconCreated(Context c, boolean isCreated) {
 		setBoolPreference(c, ICON_CREATED, isCreated);
 	}
 
@@ -18,7 +18,13 @@ public class SharedPrefernceHelper {
 		return getBoolPreference(c, ICON_CREATED);
 	}
 	
-	
+	public static void setAlarmFirstTimeStarted(Context c, boolean isStarted) {
+		setBoolPreference(c, ALARM_SET_FIRST_TIME, isStarted);
+	}
+
+	public static boolean isAlarmFirstTimeStarted(Context c) {
+		return getBoolPreference(c, ALARM_SET_FIRST_TIME);
+	}
 	
 	public static boolean compareAndUpdateStringPreference(Context c, String key, String value) {
 		if (value.equals(getStringPreference(c, key))) {

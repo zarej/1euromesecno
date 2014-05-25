@@ -1,6 +1,7 @@
 package rs.hakaton.euromesecno;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import rs.hakaton.euromesecno.sdk.activity.MainActivity;
@@ -28,6 +29,7 @@ BeneficiaryServiceResponseListener {
     	
     	if(!SharedPrefernceHelper.isIconCreated(this)) {
     		addShortcut();
+    		SharedPrefernceHelper.setIconCreated(this, true);
     	}
     	
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -37,11 +39,23 @@ BeneficiaryServiceResponseListener {
 //        onBeneficiaryListReturnError("error");
         BenficiaryService service = new BenficiaryService();
         service.getBeneficiaries(getString(R.string.open_data_url_json), this);
-        Log.e("alarm debug", "Pocinjem da zakazujem alarm");
-        scheduleAlarm();
+//        Log.e("alarm debug", "Pocinjem da zakazujem alarm");
+//        scheduleAlarm();
+        scheduleAlarm2();
     }
     
-    public void scheduleAlarm(){
+    private void scheduleAlarm2() {
+//    	if (!SharedPrefernceHelper.isAlarmFirstTimeStarted(this)) {
+    		Log.i(AlarmReciever.TAG, "Pocinjem da zakazujem alarm");
+    		Intent i = new Intent(this, AlarmReciever.class);
+    		i.putExtra(AlarmReciever.EXTRA_ONLY_SET_ALARM, true);
+    		sendBroadcast(i);
+    		SharedPrefernceHelper.setAlarmFirstTimeStarted(this, true);
+//    	} else {
+//    		Log.i(AlarmReciever.TAG, "Alarm je vec zakazan");
+//    	}
+    }
+    private void scheduleAlarm(){
     	// set the time at which alarm will fire
     	// current time + 1 minute
     	Long time = new GregorianCalendar().getTimeInMillis();
@@ -52,10 +66,12 @@ BeneficiaryServiceResponseListener {
     	AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
     	
     	
-    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, interval, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    	alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, interval, interval, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 //    	alarmManager.set(AlarmManager.RTC_WAKEUP,time, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     	Log.e("alarm debug", "Zakazao alarm");
     }
+    
+
 
 	@Override
 	public void onBeneficiaryListReturn(ArrayList<Beneficiary> beneficiaries) {
