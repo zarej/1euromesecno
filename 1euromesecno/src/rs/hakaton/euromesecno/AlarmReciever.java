@@ -64,7 +64,7 @@ public class AlarmReciever extends BroadcastReceiver {
 //		calendarNow.set(calendarNow.get(Calendar.YEAR),
 //				calendarNow.get(Calendar.MONTH), 15, 13, 30);
 		
-		long interval = AlarmManager.INTERVAL_DAY;
+		long interval = AlarmManager.INTERVAL_DAY * 30;
 		
 		if (receiveFromBoot) interval = AlarmManager.INTERVAL_DAY * 3;
 		

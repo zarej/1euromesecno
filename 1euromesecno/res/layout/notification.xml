@@ -12,31 +12,44 @@
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/image"
-        android:singleLine="true"
-        android:text="Custom Notification Title"
-        android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent.Title" />
+        android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/text"
-        style="Custom Notification Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@id/image"
-        android:text="Custom Notification Text"
-        android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/title"
-        android:text="SMS" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="Custom Notification Title"
+                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent.Title" />
+
+            <TextView
+                android:id="@+id/text"
+                style="Custom Notification Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_toRightOf="@id/image"
+                android:text="Custom Notification Text"
+                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/title"
+            android:text="SMS" />
+    </LinearLayout>
 
 </RelativeLayout>
